@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    // ØVELSE 1 - udregn areal på et rektangel
+
+    function udregnRektangelAreal (a, b){
+        // vi udregner areal ved brug af a,b
+        // a = den ene side i rektanglet
+        // b = en side i rektanglet der stødet op imod a
+
+        const total = a*b;
+        // vi laver udregningen
+
+        return total;
+        // vi retunere total, og får svaret i konsollen
+        // skriv i fx konsollen "udregnRektangelAreal (50,50)"
+        // konsollen giver tallet 2500
+    }
+
+    // ØVELSE 2- omregn areal i m2 til areal i ft2
+    
+    //convertSquareMToSquareFt (100)
+
+    function convertSquareMToSquareFt (a, b = 10.7639){
+        // funktion der kaldes convertSquareMToSquareFt
+        // udregningen fortæller a x b, hvor b er sat pr. default og a er den værdi vi ønsker beregning udfra
+        const total = (a * b);
+        // vi laver udregningen
+        return total;
+        // vi får svaret i konsollen når vi fx. skriver "convertSquareMToSquareFt (2) = 21.5278"
+        // du skal manuelt skrive tallet i parantessen
+    }
+
+</script>
+</body>
+</html>
