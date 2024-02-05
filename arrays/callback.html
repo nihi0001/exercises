@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        const person3 = {
+            firstName:"Harry", 
+            lastName: "Potter",
+            hired: false,
+        };
+
+        const person4 = {
+            firstName:"Fred", 
+            lastName: "Weassley",
+            hired: false,
+        };
+
+        function hire(person){
+            person.hired=true;
+        }
+
+        function fire(person){
+            person.fire=false;
+        }
+
+        hire (person3);
+        console.log(person3)
+        // så nu er person 2 sat ind i (person) function hire (person). så nu er person 3 property sat til true
+
+        function fireOrHire(action, person){
+        // kalder funktionen action med parameteret person
+            action(person);
+        }
+
+        fireOrHire (hire, person3);
+        console.log(person3)
+        // nu er person 3 property sat til true, fordi den er sat til hire
+
+    </script>
+</body>
+</html>
