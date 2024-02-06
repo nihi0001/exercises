@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <main>
+        <section>
+
+            <h1></h1>
+            <button id="tooLo">For lavt</button>
+            <button id="tooHi">For Højt</button>
+
+        </section>
+
+    </main>
+
+    <script>
+        "use strict"
+        let loNum = 0;
+        let hiNum = 100;
+        let computerGuess;
+        let numberOfGuesses = 0;
+        let computerGuessText = document.querySelector("h1")
+
+        document.querySelector("#tooLo").addEventListener("click", tooLoOrHi)
+        document.querySelector("#tooHi").addEventListener("click", tooLoOrHi)
+
+        computerGuesses();
+        function computerGuesses() {
+            numberOfGuesses++;
+            computerGuess = Math.round(loNum + (hiNum - loNum) / 2);
+            computerGuessText.textContent = computerGuess;
+            console.log("numberOfGuesses", numberOfGuesses)
+        }
+
+        function tooLoOrHi(evt) {
+            console.log(evt.target.id);
+            if (evt.target.id === "tooLo") {
+                loNum = computerGuess;
+            } else {
+                hiNum = computerGuess;
+            }
+            computerGuesses();
+
+        }
+
+
+        //function tooLoOrHi() {
+        //  console.log("LO");
+        //loNum = computerGuess
+        //computerGuesses();
+        //  }
+
+        //function tooHi() {
+        // console.log("HI");
+        //  hiNum = computerGuess
+        // computerGuesses();
+        // }
+
+    </script>
+
+    <style>
+        main {
+    background-color: #edcd44;
+}
+
+label,
+input,
+button,
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+}
+
+label {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    /*border-radius: 10px;*/
+    padding: 25px;
+    text-align: center;
+    font-size: 25px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    background-color: #81cad6;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+button {
+    /*border: 1px solid black;*/
+    margin-top: 1rem;
+    padding: 10px;
+    background-color: #dc3e25;
+    color: antiquewhite;
+    font-size: 20px;
+}
+
+button:hover {
+    transform: scale(1.02);
+    border: 2px solid #000000;
+
+}
+
+.correct {
+    color: rgb(0, 176, 0);
+}
+
+.too-low {
+    color: rgb(255, 0, 0);
+}
+
+.too-high {
+    color: rgb(0, 128, 255);
+}
+    </style>
+
+</body>
+
+</html>

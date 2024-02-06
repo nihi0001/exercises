@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css">-->
+</head>
+
+<body>
+    <main>
+        <section>
+
+            <label for="name">Gæt det rigtige tal mellem 0 - 100:</label>
+            <input type="number" id="guess" name="name" required minlength="4" maxlength="8" size="10">
+            <button>Gæt</button>
+            <p id="result">&nbsp;</p>
+        </section>
+
+    </main>
+
+    <script>"use strict"
+        const comGuess = Math.floor(Math.random() * 99) + 1;
+        document.querySelector("#guess").focus();
+        console.log(comGuess);
+
+        document.querySelector("button").addEventListener("click", btn_click);
+        function btn_click() {
+            const userGuess = parseInt(document.querySelector("#guess").value);
+            console.log(userGuess);
+            if (userGuess === comGuess) {
+                document.querySelector("#result").textContent = "Korrekt!";
+                document.querySelector("#result").className = "correct";
+
+            } else if (userGuess < comGuess) {
+                document.querySelector("#result").textContent = "For lavt! Prøv igen";
+                document.querySelector("#result").className = "too-low";
+
+            } else {
+                document.querySelector("#result").textContent = "For Højt! Prøv igen";
+                document.querySelector("#result").className = "too-high";
+
+            }
+
+        }
+    </script>
+
+    <style>
+        main {
+            background-color: #edcd44;
+        }
+
+        label,
+        input,
+        button,
+        p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+        }
+
+        label {
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            /*border-radius: 10px;*/
+            padding: 25px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input {
+            background-color: #81cad6;
+            border: none;
+            padding: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        button {
+            /*border: 1px solid black;*/
+            margin-top: 1rem;
+            padding: 10px;
+            background-color: #dc3e25;
+            color: antiquewhite;
+            font-size: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            border: 2px solid #000000;
+
+        }
+
+        .correct {
+            color: rgb(0, 176, 0);
+        }
+
+        .too-low {
+            color: rgb(255, 0, 0);
+        }
+
+        .too-high {
+            color: rgb(0, 128, 255);
+        }
+    </style>
+
+</body>
+
+</html>
