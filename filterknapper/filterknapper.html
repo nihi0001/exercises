@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button data-filter="electric">Elektriske biler</button>
+    <button data-filter="bus">Busser</button>
+    <button data-filter="cykel">Cykler</button>
+
+    
+    <script>
+
+        "use strict";
+
+        document.querySelectorAll("button").forEach(button =>{
+            button.addEventListener("click", btnFilterEVTListener )
+        });
+
+        function btnFilterEVTListener(evt){
+            console.log(evt.currentTarget.dataset.filter);
+            // currenttarget fortæller os hvilket element eventet sidder på. altså hvilken knap vi trykker på
+            // når vi tilføjer dataset.filter så får vi kun html 'data-filter' navnet frem.
+
+        }
+
+    </script>
+</body>
+</html>

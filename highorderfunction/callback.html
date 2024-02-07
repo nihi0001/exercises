@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+
+        // const people = ["Harry", "Ron", "Hermione", "Newville"];
+
+        //function sayHello(person){
+        // console.log(`Hello ${person}`);
+        // }
+
+        // people.forEach(sayHello)
+
+        // nedenstående formulering giver samme resultat som "people.forEach(sayHello)"
+        //people.forEach((person) => {
+        //  sayHello(person);
+        // });
+
+        // ny opgave 
+
+        const people = ["Harry", "Ron", "Hermione", "Neville"];
+        function testParms(a, b, c, d) {
+            console.log(`a: ${a}, b: ${b}, c: ${c}, d: ${d}`);
+        }
+
+        people.forEach(testParms);
+
+        // forEach modtager altid kun 3 parametre, derfor er d undefined
+        //a: Harry, b: 0, c: Harry,Ron,Hermione,Neville, d: undefined
+        //a: Ron, b: 1, c: Harry,Ron,Hermione,Neville, d: undefined
+        //a: Hermione, b: 2, c: Harry,Ron,Hermione,Neville, d: undefined
+        //a: Neville, b: 3, c: Harry,Ron,Hermione,Neville, d: undefined
+
+
+    </script>
+</body>
+
+</html>

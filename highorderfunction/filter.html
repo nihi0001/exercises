@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        "use strict";
+        const animals = [
+            {
+                name: "Mandu",
+                type: "cat"
+            },
+            {
+                name: "Mia",
+                type: "cat"
+            },
+            {
+                name: "LeeLoo",
+                type: "dog"
+            },
+            {
+                name: "ScoobyDoo",
+                type: "dog"
+            },
+        ];
+
+       // function isCat(animal) {
+        //    if (animal.type === "cat") {
+            //    return true;
+           // } else {
+          //      return false;
+         //   }
+      //  }
+
+       // console.log("animal 0 er det en kat", isCat(animals[0]));
+       // console.log("animal 2 er det en kat", isCat(animals[2]));
+
+      // let result = animals.filter(isCat);
+      // console.log(result);
+
+// NY OPGAVE
+
+      // function all(animal){
+       // return true;
+    //  }
+
+   //   function none(animal){
+    //    return false
+   //   }
+   //   console.log("all", animals.filter(all))
+    //  console.log("none", animals.filter(none))
+
+// NY OPGAVE - filter efter cat
+
+
+    //   function isCat(animal) {
+      //  if (animal.type === "cat") {
+        //     return true;
+      //   } else {
+      //       return false;
+      //   }
+    //   }
+
+ //   const onlyCats = animals.filter(isCat);
+ //  console.log(animals.filter(isCat))
+
+ // den returnere vores array med kun de objekter der passer med cat
+
+
+    // NY OPGAVE - filter efter dog
+
+
+    function isDog(animal) {
+        if (animal.type === "dog") {
+             return true;
+         } else {
+             return false;
+         }
+       }
+
+    const onlyCats = animals.filter(isDog);
+    console.log(animals.filter(isDog))
+
+// den returnere vores array med kun de objekter der passer med dog
+
+
+
+    </script>
+</body>
+
+</html>

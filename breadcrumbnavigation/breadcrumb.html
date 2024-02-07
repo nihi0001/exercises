@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bread Crumbs</title>
+</head>
+
+<body>
+    <p></p>
+    <button>Generate breadcrumbs</button>
+
+    <script>
+        const bc = [
+            { name: "Hvidevarer", link: "/hvidevarer" },
+            { name: "Vaskemaskiner", link: "/hvidevarer/vaskemaskiner" },
+            { name: "Bosch", link: "/hvidevarer/vaskemaskiner/bosch/" },
+        ];
+        console.log("bc.length", bc.length)
+        document.querySelector("button").addEventListener("click", generateBreadCrumb);
+        const pPointer = document.querySelector("p");
+        function generateBreadCrumb() {
+            bc.forEach((crumb, i) => {
+                console.log("i", i);
+
+                if (i === bc.length - 1) {
+                    pPointer.innerHTML += crumb.name;
+                } else {
+                    pPointer.innerHTML += `<a href=${crumb.link}>${crumb.name}</a> /`;
+                }
+            });
+        }
+
+        //pPointer.innerHTML += crumb.name + " " + crumb.link;
+
+        // <a href=""></a>
+        // længden - 1 = betyder at vi arbejder med det sidste element i array 
+    </script>
+</body>
+
+</html>
