@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>Klik</button>
+    <div id="ball"></div>
+
+    <style>
+        #ball {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: orange;
+            width: 8rem;
+        }
+
+        .ani {
+            animation-iteration-count: 4;
+            animation-direction: alternate;
+            animation-name: ani;
+            animation-timing-function: linear;
+            animation-duration: 1s;
+        }
+
+        @keyframes ani {
+            from {
+                background-color: orange;
+                transform: scale(1);
+            }
+
+            to {
+                background-color: red;
+                transform: scale(1.2);
+            }
+
+        }
+    </style>
+
+    <script>
+        document.querySelector("button").addEventListener("click", btnKlik)
+
+        function btnKlik() {
+            //document.querySelector("#ball").addEventListener("animationend", animationEnd)
+            //document.querySelector("#ball").addEventListener("animationiteration", animationIteration)
+            document.querySelector("#ball").addEventListener("animationend", animationITAndEnd)
+            document.querySelector("#ball").addEventListener("animationiteration", animationITAndEnd)
+            document.querySelector("#ball").classList.add("ani")
+
+        }
+
+        function animationITAndEnd(evt) {
+            console.log("animationITAndEnd", evt.type);
+            if (evt.type === "animationend") {
+                document.querySelector("#ball").classList.remove("ani")
+            }
+        }
+
+        //function animationEnd(evt){
+        //  console.log("animationEnd")
+        // document.querySelector("#ball").classList.remove("ani")
+
+        //}
+
+        //function animationIteration(evt){
+        // console.log("animationIteration")
+        //}
+
+    </script>
+
+
+</body>
+
+</html>

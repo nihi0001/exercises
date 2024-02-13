@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //const name = "Peter Heronimous Lind";
+        //const firstName = "Peter" 
+        //const middleName = "Heronimous" 
+        //const lastName = "Lind" 
+
+        //console.log(firstName)
+        //console.log(str.substring())
+
+        const paragraph = "Peter Heronimous Lind";
+
+        const firstName = paragraph.substring(0, paragraph.indexOf(" "));
+        const middleName = paragraph.substring(paragraph.indexOf(" ") + 1, paragraph.lastIndexOf(" "));
+        const lastName = paragraph.substring(paragraph.indexOf(" ") + 1, paragraph.lastIndexOf(" "));
+
+        console.log(`The index of the first is ${firstName}`);
+        console.log(`The index of the first is ${middleName}`);
+        console.log(`The index of the first is ${lastName}`);
+
+
+
+    </script>
+</body>
+
+</html>
