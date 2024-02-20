@@ -7,9 +7,51 @@
 </head>
 <body>
 
-    <button></button>
+    <button>Næste episode</button>
     
-    <script></script>
-    <style></style>
+    <script>
+
+       // const btn = document.querySelector("button");
+     //   btn.addEventListener("mouseover", event =>{
+     //       console.log(event);
+      //  });
+
+       // function stopAnimation () {
+      //  document.querySelector(.changeBackground).classList.addEventListener("animationend", knapStop);
+
+//}
+document.querySelector("button").addEventListener("animationend", animationEnd);
+
+function animationEnd(){
+    document.querySelector("button").style.background="red";
+}
+
+    </script>
+    <style>
+
+
+    button{
+        padding: 2rem;
+       background: linear-gradient(to right, white 50%, gray 50%);
+       background-size: 200% 100%;
+       background-position: 100% 0%;
+       animation: changeBackground 3s linear;
+
+    }
+    @keyframes changeBackground{
+        0%{
+            background-position: 0%;
+
+        }
+
+        100%{
+            background-position: 100%;
+
+
+        }
+
+    }
+
+    </style>
 </body>
 </html>

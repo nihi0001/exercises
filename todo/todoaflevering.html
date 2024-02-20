@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=DM+Sans:opsz@9..40&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Riot&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="todo_app">
+            <h2>To do list</h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Mine opgaver">
+                <button onclick="addTask()"> Tilføj</button>
+            </div>
+            <ul id="list-container">
+                <!--<li class="checked">task 1</li>
+                <li>task 2</li>
+                <li>task 3</li>-->
+            </ul>
+            <div id="item-counter">Antal opgaver: 0</div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // Henter html id og gemmer det i variablen
+        const inputBox = document.getElementById("input-box");
+        const listContainer = document.getElementById("list-container");
+        const itemCounter = document.getElementById("item-counter");
+
+        // funktionen addtask kaldes når brugeren trykker på tilføj knappen
+        // den tjekker om inputfeltet er tomt. Hvis det er tomt, så sendes en feedback besked om at man skal skrive noget i feltet
+        // Hvis inputfeltet ikke er tomt, så opretter den et nyt li element
+        // tilføjelse af span element (slet knap) og det tilføjes som et barn til det nye li element
+        // inputfeltet nulstilles og dataen gemmes ved at kalde saveData();
+        function addTask() {
+
+            if (inputBox.value === '') {
+                alert("Du skal skrive noget i feltet");
+            }
+            else {
+                let li = document.createElement("li");
+                li.innerHTML = inputBox.value;
+                listContainer.appendChild(li);
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+            }
+            inputBox.value = "";
+            saveData();
+            updateItemCounter();
+        }
+
+        // eventlistener på listContainer som reagere på et klik
+        // hvis det klikkede element er et li element, skifter det klassen "ckecked" for at fjerne markeringen af opgaven
+        // hvis det klikkede element er et span element (slet knappen), fjernes li elementet fra listen
+        // begge events gemmer den opdaterede data ved at kalde saveData();
+        listContainer.addEventListener("click", function (e) {
+            if (e.target.tagName === "LI") {
+                e.target.classList.toggle("checked");
+                saveData();
+                updateItemCounter();
+
+
+            } else if (e.target.tagName == "SPAN") {
+                e.target.parentElement.remove();
+                saveData();
+                updateItemCounter();
+
+            }
+        }, false);
+
+        function updateItemCounter() {
+            const itemCount = listContainer.children.length;
+            itemCounter.textContent = `Antal opgaver: ${itemCount}`;
+        }
+
+
+
+        // lokal gem ved opdatering af sitet
+        // saveData() gemmer listContainer under "data" på browserens lokale enhed
+        function saveData() {
+            localStorage.setItem("data", listContainer.innerHTML);
+        }
+
+        // showTask() henter dataen fra den lokale browser og opdatere indholdet af listContainer for at vise de gemte opgaver når siden loades på ny
+        function showTask() {
+            listContainer.innerHTML = localStorage.getItem("data");
+            updateItemCounter();
+        }
+
+        showTask();
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* font-family: Arial, Helvetica, sans-serif;*/
+            font-family: "Space Grotesk", sans-serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            /*background: rgb(68, 223, 132);*/
+            /* background: linear-gradient(180deg, rgba(68, 223, 132, 1) 0%, rgba(207, 230, 212, 1) 55%, rgba(0, 142, 228, 1) 77%, rgba(254, 235, 159, 1) 87%, rgba(0, 142, 228, 1) 100%);*/
+            background: rgb(237, 176, 251);
+            background: linear-gradient(180deg, rgba(237, 176, 251, 1) 0%, rgba(207, 230, 212, 1) 55%, rgba(0, 142, 228, 1) 82%, rgba(254, 235, 159, 1) 100%);
+            padding: 10px;
+        }
+
+        .todo_app {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            margin: 100px auto 20px;
+            padding: 80px;
+            /*border-radius: 10px;*/
+
+        }
+
+        .todo_app h2 {
+            color: #555;
+            font-size: 35px;
+            text-transform: uppercase;
+            display: flex;
+            /*align-items: center;*/
+            justify-content: center;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #edeef0;
+            border-radius: 20px;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 16px 50px;
+            background-color: #e59bf6;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 20px;
+
+        }
+
+        ul li {
+            list-style: none;
+            font-size: 16px;
+            padding: 12px 8px 12px 50px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '';
+            position: absolute;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-image: url(images/unchecked.png);
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+        }
+
+        ul li.checked {
+            color: #555;
+            text-decoration: line-through;
+        }
+
+        ul li.checked::before {
+            background-image: url(images/checked_done.png);
+        }
+
+        ul li span {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            font-size: 22px;
+            color: #555;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        ul li span:hover {
+            background: #edeef0;
+
+        }
+
+        #item-counter {
+            margin-top: 5rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            input {
+                font-size: 12px;
+                padding: 10px;
+
+            }
+
+            button {
+                padding: 10px 30px;
+
+                font-size: 12px;
+                margin-left: -4rem;
+            }
+
+            ul li {
+                font-size: 14px;
+
+            }
+
+            .todo_app h2 {
+                font-size: 25px;
+
+            }
+        }
+    </style>
+</body>
+
+</html>
