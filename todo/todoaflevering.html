@@ -39,11 +39,13 @@
         const listContainer = document.getElementById("list-container");
         const itemCounter = document.getElementById("item-counter");
 
+
         // funktionen addtask kaldes når brugeren trykker på tilføj knappen
         // den tjekker om inputfeltet er tomt. Hvis det er tomt, så sendes en feedback besked om at man skal skrive noget i feltet
         // Hvis inputfeltet ikke er tomt, så opretter den et nyt li element
         // tilføjelse af span element (slet knap) og det tilføjes som et barn til det nye li element
         // inputfeltet nulstilles og dataen gemmes ved at kalde saveData();
+        // updateItemCounter(); opdateres når en ny opgave tilføjes
         function addTask() {
 
             if (inputBox.value === '') {
@@ -66,6 +68,8 @@
         // hvis det klikkede element er et li element, skifter det klassen "ckecked" for at fjerne markeringen af opgaven
         // hvis det klikkede element er et span element (slet knappen), fjernes li elementet fra listen
         // begge events gemmer den opdaterede data ved at kalde saveData();
+        // updateItemCounter(); opdateres når en ny opgave tilføjes eller fjernes
+
         listContainer.addEventListener("click", function (e) {
             if (e.target.tagName === "LI") {
                 e.target.classList.toggle("checked");
@@ -81,23 +85,29 @@
             }
         }, false);
 
+    
+
+        // funktion til at opdatere antallet af opgaver i counteren
         function updateItemCounter() {
             const itemCount = listContainer.children.length;
             itemCounter.textContent = `Antal opgaver: ${itemCount}`;
         }
 
 
-
         // lokal gem ved opdatering af sitet
         // saveData() gemmer listContainer under "data" på browserens lokale enhed
         function saveData() {
             localStorage.setItem("data", listContainer.innerHTML);
+
         }
 
-        // showTask() henter dataen fra den lokale browser og opdatere indholdet af listContainer for at vise de gemte opgaver når siden loades på ny
+        // showTask() henter dataen fra den lokale browser og opdatere indholdet af listContainer når siden loades
+        // opdatere også item counter, når siden loades
         function showTask() {
             listContainer.innerHTML = localStorage.getItem("data");
             updateItemCounter();
+         
+
         }
 
         showTask();
